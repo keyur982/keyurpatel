@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keyur Patel | Full Stack Developer</title>
+<meta name="description" content="Keyur Patel — Full Stack Developer in Surat, India. 4+ years building AR try-on experiences, e-commerce platforms and ERP backends. React, TypeScript, Three.js, Node.js, PHP, Python (Frappe).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-2:#0f1729;
+    --ink:#eaeef5;
+    --muted:#98a2b3;
+    --line:#1d2a40;
+    --teal:#4db3cf;
+    --teal-dim:#2b6f84;
+    --gold:#d9c08a;
+    --maxw:1080px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,sans-serif;
+    font-size:16.5px;line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--teal);text-decoration:none}
+  a:hover{text-decoration:underline}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .mono{font-family:"JetBrains Mono",monospace}
+
+  /* ---------- reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+  /* ---------- nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,18,32,.88);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-in{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+  .brand{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:600;color:var(--ink)}
+  .brand:hover{text-decoration:none;color:var(--teal)}
+  .nav-links{display:flex;gap:24px;font-size:.85rem;flex-wrap:wrap}
+  .nav-links a{color:var(--muted);padding:4px 0;border-bottom:2px solid transparent}
+  .nav-links a:hover{color:var(--ink);text-decoration:none}
+  .nav-links a.active{color:var(--teal);border-bottom-color:var(--teal)}
+  .nav-resume{
+    font-size:.8rem;font-weight:600;color:#06121a;background:var(--teal);
+    padding:8px 14px;border-radius:6px;white-space:nowrap;
+  }
+  .nav-resume:hover{text-decoration:none;filter:brightness(1.1)}
+  @media(max-width:900px){.nav-links{display:none}}
+
+  /* ---------- hero ---------- */
+  header.hero{border-bottom:1px solid var(--line);overflow:hidden}
+  .hero-in{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center;
+    padding:80px 0 64px;
+  }
+  @media(max-width:860px){.hero-in{grid-template-columns:1fr;padding:52px 0 40px}}
+  .kicker{
+    font-family:"JetBrains Mono",monospace;font-size:.75rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:8px;
+  }
+  .loc{font-size:.85rem;color:var(--muted);margin-bottom:20px}
+  h1{
+    font-family:"Fraunces",serif;font-weight:500;
+    font-size:clamp(2.6rem,6vw,4rem);line-height:1.05;letter-spacing:-.01em;
+  }
+  .tagline{
+    margin-top:14px;font-family:"Fraunces",serif;font-style:italic;font-weight:400;
+    font-size:clamp(1.05rem,2.2vw,1.3rem);color:var(--gold);
+  }
+  .hero p.lede{margin-top:20px;max-width:36em;color:var(--muted);font-size:1rem}
+  .stats{display:flex;gap:40px;margin-top:32px;flex-wrap:wrap}
+  .stat .n{font-family:"Fraunces",serif;font-size:2rem;color:var(--ink);line-height:1.1}
+  .stat .l{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+  .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .btn{
+    display:inline-block;padding:12px 22px;border-radius:6px;
+    background:var(--teal);color:#06121a;font-weight:600;font-size:.9rem;
+  }
+  .btn:hover{text-decoration:none;filter:brightness(1.1)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--teal);color:var(--teal)}
+  .socials{margin-top:26px;display:flex;gap:20px;font-size:.85rem}
+  .socials a{color:var(--muted)}
+  .socials a:hover{color:var(--teal)}
+
+  .stage{position:relative;height:360px}
+  @media(max-width:860px){.stage{height:250px}}
+  #ring{width:100%;height:100%;display:block}
+  .stage figcaption{
+    position:absolute;bottom:-4px;right:0;font-family:"JetBrains Mono",monospace;
+    font-size:.66rem;color:var(--muted);letter-spacing:.04em;
+  }
+  .scroll-hint{display:block;text-align:center;padding:0 0 26px;color:var(--muted);font-size:1.2rem}
+
+  /* ---------- sections ---------- */
+  section{padding:84px 0;border-bottom:1px solid var(--line)}
+  .sec-label{
+    font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--teal);margin-bottom:12px;
+  }
+  h2{font-family:"Fraunces",serif;font-weight:500;font-size:clamp(1.7rem,3.2vw,2.3rem);margin-bottom:14px}
+  .sec-intro{color:var(--muted);max-width:42em}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;margin-top:34px}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;gap:30px}}
+  .about-grid p + p{margin-top:14px}
+  .about-grid p{color:var(--muted)}
+  .about-grid p strong{color:var(--ink);font-weight:600}
+  .facts{border-left:2px solid var(--teal-dim);padding-left:22px;align-self:start}
+  .facts dt{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-top:16px}
+  .facts dt:first-child{margin-top:0}
+  .facts dd{color:var(--ink);font-size:.93rem}
+
+  /* ---------- skills ---------- */
+  .skill-groups{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.skill-groups{grid-template-columns:1fr}}
+  .sg{border:1px solid var(--line);border-radius:10px;padding:24px 26px;background:var(--bg-2)}
+  .sg h3{font-size:.78rem;font-family:"JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-weight:500}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{
+    font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--ink);
+    border:1px solid var(--line);border-radius:999px;padding:5px 12px;background:var(--bg);
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .chip:hover{border-color:var(--teal);color:var(--teal)}
+  .learning{
+    margin-top:22px;border:1px dashed var(--teal-dim);border-radius:10px;
+    padding:24px 26px;background:transparent;
+  }
+  .learning h3{font-size:.78rem;font-family:"JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);margin-bottom:8px;font-weight:500}
+  .learning p{color:var(--muted);font-size:.93rem;margin-bottom:14px}
+  .chip.next{border-color:var(--teal-dim);color:var(--teal)}
+  .chip.explore{border-color:#3a3350;color:var(--gold)}
+
+  /* ---------- experience ---------- */
+  .timeline{margin-top:40px;position:relative;padding-left:28px}
+  .timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .t-item{position:relative;padding-bottom:40px}
+  .t-item:last-child{padding-bottom:0}
+  .t-item::before{
+    content:"";position:absolute;left:-28px;top:7px;width:14px;height:14px;border-radius:50%;
+    background:var(--bg);border:3px solid var(--teal);
+  }
+  .t-when{font-family:"JetBrains Mono",monospace;font-size:.72rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  .t-item h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.3rem;margin-top:6px}
+  .t-item .org{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+  .t-item ul{list-style:none;color:var(--muted);font-size:.95rem}
+  .t-item li{padding-left:20px;position:relative;margin-top:8px}
+  .t-item li::before{content:"—";position:absolute;left:0;color:var(--teal)}
+  .t-item li strong{color:var(--ink);font-weight:600}
+  .edu-grid{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.edu-grid{grid-template-columns:1fr}}
+  .edu-card{border:1px solid var(--line);border-radius:10px;padding:22px 24px;background:var(--bg-2)}
+  .edu-card .deg{font-weight:600;color:var(--ink)}
+  .edu-card .sch{color:var(--muted);font-size:.9rem;margin-top:2px}
+  .edu-card .yrs{font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--gold);letter-spacing:.1em;margin-top:8px}
+
+  /* ---------- work ---------- */
+  .cards{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.cards{grid-template-columns:1fr}}
+  .card{
+    border:1px solid var(--line);border-radius:10px;padding:28px;background:var(--bg-2);
+    display:flex;flex-direction:column;gap:14px;
+    transition:border-color .2s ease, transform .2s ease;
+  }
+  .card:hover{border-color:var(--teal-dim);transform:translateY(-3px)}
+  @media (prefers-reduced-motion:reduce){.card:hover{transform:none}}
+  .card h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.28rem}
+  .card .role{font-family:"JetBrains Mono",monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal)}
+  .card p{color:var(--muted);font-size:.94rem;flex:1}
+  .card p strong{color:var(--ink);font-weight:600}
+
+  /* ---------- growth ---------- */
+  .growth-grid{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  @media(max-width:860px){.growth-grid{grid-template-columns:1fr}}
+  .g-card{border:1px solid var(--line);border-radius:10px;padding:26px;background:var(--bg-2)}
+  .g-card .stepno{font-family:"Fraunces",serif;font-style:italic;color:var(--gold);font-size:1rem}
+  .g-card h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.2rem;margin:6px 0 10px}
+  .g-card p{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+
+  /* ---------- interests ---------- */
+  .int-grid{margin-top:38px;display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:820px){.int-grid{grid-template-columns:1fr}}
+  .int-card{border:1px solid var(--line);border-radius:10px;padding:28px;background:var(--bg-2)}
+  .int-card .emoji{font-size:1.7rem}
+  .int-card h3{font-family:"Fraunces",serif;font-weight:500;font-size:1.25rem;margin:10px 0 8px}
+  .int-card p{color:var(--muted);font-size:.94rem}
+
+  /* ---------- contact ---------- */
+  #contact{text-align:center;border-bottom:none}
+  #contact p{color:var(--muted);max-width:34em;margin:0 auto}
+  .contact-row{margin-top:30px;display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;color:var(--muted);font-size:.8rem}
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">Keyur Patel</a>
+    <div class="nav-links" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#work">Work</a>
+      <a href="#growth">Growth</a>
+      <a href="#interests">Interests</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav-resume" href="Keyur_Patel_Resume.pdf" download>Resume</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <div class="kicker">Full Stack Developer</div>
+      <div class="loc">Surat, Gujarat, India</div>
+      <h1>Keyur Patel</h1>
+      <div class="tagline">whichever layer of the stack needs hands — that's my layer.</div>
+      <p class="lede">
+        Four years of production work across AR experiences in the browser, e-commerce
+        platforms, admin systems, and ERP backends. I don't guard a specialism —
+        I learn what the product needs and ship it.
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="n">4+</div><div class="l">Years shipping</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">AR products built</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">Stacks in production</div></div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn" href="#work">View my work →</a>
+        <a class="btn ghost" href="#skills">Technical core</a>
+      </div>
+      <div class="socials">
+        <a href="https://linkedin.com/in/keyur-74742" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/keyur982" target="_blank" rel="noopener">GitHub</a>
+        <a href="mailto:keyur823827@gmail.com">Email</a>
+      </div>
+    </div>
+    <figure class="stage">
+      <canvas id="ring" aria-hidden="true"></canvas>
+      <figcaption>rendered live with Three.js — the library behind my AR work</figcaption>
+    </figure>
+  </div>
+  <a class="scroll-hint" href="#about" aria-label="Scroll to About">↓</a>
+</header>
+
+<section id="about">
+  <div class="wrap reveal">
+    <div class="sec-label">01 / About</div>
+    <h2>Simple person. Serious builder.</h2>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm 26, from Gujarat, and I've spent the last four years as the developer a
+          growing product leans on. When it needed AR, I learned real-time rendering.
+          When it needed a storefront, I shipped one. When it needed an ERP, I went
+          deep into Python and Frappe. <strong>Versatility isn't my fallback — it's my track record.</strong>
+        </p>
+        <p>
+          Off the keyboard, I'm a straightforward, family-first person. I stay
+          <strong>calm under heavy workloads</strong> — deadlines don't rattle me, and low moments
+          don't stick to me. Teammates would tell you I'm usually the one keeping the
+          room laughing. I keep myself physically fit and my life uncomplicated,
+          which means my energy goes into the work.
+        </p>
+        <p>
+          After four years living in Ahmedabad for work, I'm now looking to build the
+          next chapter closer to family in Surat — on-site there, hybrid, or remote.
+        </p>
+      </div>
+      <dl class="facts">
+        <dt>Age</dt><dd>26</dd>
+        <dt>Based in</dt><dd>Surat, Gujarat, India</dd>
+        <dt>Experience</dt><dd>4+ years, full stack</dd>
+        <dt>Working style</dt><dd>Calm under pressure, quick to learn, easy to work with</dd>
+        <dt>Open to</dt><dd>Surat-based, hybrid or remote roles</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap reveal">
+    <div class="sec-label">02 / Skills</div>
+    <h2>Technical core.</h2>
+    <p class="sec-intro">
+      Everything below has shipped to production — not tutorial knowledge, working knowledge.
+      Grouped by layer, because I've worked across all of them, often in the same week.
+    </p>
+    <div class="skill-groups">
+      <div class="sg">
+        <h3>Frontend</h3>
+        <div class="chips">
+          <span class="chip">React</span><span class="chip">TypeScript</span>
+          <span class="chip">JavaScript</span><span class="chip">Three.js</span>
+          <span class="chip">React Three Fiber</span><span class="chip">HTML5</span><span class="chip">CSS3</span>
+        </div>
+      </div>
+      <div class="sg">
+        <h3>Backend</h3>
+        <div class="chips">
+          <span class="chip">Node.js</span><span class="chip">Express</span>
+          <span class="chip">PHP</span><span class="chip">Python</span>
+          <span class="chip">Frappe</span><span class="chip">REST APIs</span>
+        </div>
+      </div>
+      <div class="sg">
+        <h3>Databases</h3>
+        <div class="chips">
+          <span class="chip">MySQL</span><span class="chip">MongoDB</span>
+        </div>
+      </div>
+      <div class="sg">
+        <h3>Platforms &amp; tools</h3>
+        <div class="chips">
+          <span class="chip">ERPNext</span><span class="chip">OpenCart (Journal)</span>
+          <span class="chip">n8n automation</span><span class="chip">Git</span>
+        </div>
+      </div>
+    </div>
+    <div class="learning">
+      <h3>Currently expanding</h3>
+      <p>Deliberately growing in three directions — deeper frontend, stronger infrastructure, and new frontiers:</p>
+      <div class="chips">
+        <span class="chip next">Next.js</span>
+        <span class="chip next">Docker</span>
+        <span class="chip next">AWS</span>
+        <span class="chip next">System design</span>
+        <span class="chip explore">Generative AI</span>
+        <span class="chip explore">Cybersecurity</span>
+        <span class="chip explore">AR gaming</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap reveal">
+    <div class="sec-label">03 / Experience</div>
+    <h2>Career timeline.</h2>
+    <div class="timeline">
+      <div class="t-item">
+        <div class="t-when">Jan 2022 – Present · Ahmedabad, India</div>
+        <h3>Full Stack Developer</h3>
+        <div class="org">Plushvie Retail Pvt. Ltd. — jewellery-tech startup</div>
+        <ul>
+          <li>Owned the <strong>AR augmentation layer</strong> of a rebuilt virtual try-on application — real-time rendering with Three.js / React Three Fiber on a React + TypeScript frontend.</li>
+          <li>Developed the <strong>e-commerce admin platform</strong> (React, Node.js, MongoDB): catalogue and order management, role-based access control, theme customisation, activity logs.</li>
+          <li>Currently rebuilding admin and backend capabilities on <strong>Frappe / ERPNext</strong> (Python), exposing REST APIs consumed by mobile apps and the website.</li>
+          <li>Delivered multiple <strong>OpenCart storefronts</strong> (PHP, MySQL, Journal theme) on tight timelines, plus a console for managing the try-on product catalogue.</li>
+        </ul>
+      </div>
+      <div class="t-item">
+        <div class="t-when">Oct 2021 – Jan 2022 · Ahmedabad, India</div>
+        <h3>Developer Intern</h3>
+        <div class="org">Plushvie Retail Pvt. Ltd.</div>
+        <ul>
+          <li>Built the first versions of a <strong>browser-based AR jewellery try-on</strong> and an <strong>AR video-calling web app</strong> with vanilla JavaScript, HTML, and Node.js / Express on MySQL — earning a full-time offer in three months.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="deg">B.E. in Information Technology</div>
+        <div class="sch">Sarvajanik College of Engineering and Technology, Surat</div>
+        <div class="yrs">2018 – 2021</div>
+      </div>
+      <div class="edu-card">
+        <div class="deg">Diploma in Information Technology</div>
+        <div class="sch">Dr. S. &amp; S.S. Ghandhy College of Engineering and Technology, Surat</div>
+        <div class="yrs">2015 – 2018</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="wrap reveal">
+    <div class="sec-label">04 / Selected Work</div>
+    <h2>Things I've built.</h2>
+    <p class="sec-intro">
+      Production systems with real users — built, shipped, and supported by me.
+    </p>
+    <div class="cards">
+      <article class="card">
+        <div class="role">AR · Frontend · Backend</div>
+        <h3>AR jewellery virtual try-on</h3>
+        <p>
+          Customers try jewellery live through their camera, in the browser.
+          I built the <strong>first version end to end</strong> — vanilla JavaScript, HTML, Node.js /
+          Express, MySQL, no frameworks — then owned the <strong>AR augmentation layer</strong> of
+          the rebuilt version with Three.js and React Three Fiber on React + TypeScript.
+        </p>
+        <div class="chips">
+          <span class="chip">Three.js</span><span class="chip">R3F</span><span class="chip">React</span>
+          <span class="chip">TypeScript</span><span class="chip">Node.js</span><span class="chip">MySQL</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="role">Frontend · Real-time</div>
+        <h3>AR video-calling web app</h3>
+        <p>
+          A live consultation experience where customers try jewellery on-camera with a
+          salesperson. I built the <strong>frontend and event flow</strong> with vanilla JavaScript
+          on a Node.js / MySQL stack — real-time coordination without a framework safety net.
+        </p>
+        <div class="chips">
+          <span class="chip">JavaScript</span><span class="chip">Node.js</span>
+          <span class="chip">Express</span><span class="chip">MySQL</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="role">Full Stack</div>
+        <h3>E-commerce admin platform</h3>
+        <p>
+          The internal control room for an online jewellery business: catalogue and order
+          management, <strong>role-based access control</strong>, theme customisation, and activity
+          logs. React on the frontend, Node.js and MongoDB behind it.
+        </p>
+        <div class="chips">
+          <span class="chip">React</span><span class="chip">Node.js</span><span class="chip">MongoDB</span>
+        </div>
+      </article>
+      <article class="card">
+        <div class="role">Platform · Backend</div>
+        <h3>ERP migration &amp; storefronts</h3>
+        <p>
+          An ongoing migration of admin and backend capabilities onto <strong>Frappe / ERPNext</strong>
+          in Python, exposing REST APIs for mobile apps and web — plus multiple
+          <strong>OpenCart storefronts</strong> delivered on tight timelines.
+        </p>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Frappe</span><span class="chip">ERPNext</span>
+          <span class="chip">PHP</span><span class="chip">OpenCart</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="growth">
+  <div class="wrap reveal">
+    <div class="sec-label">05 / Growth</div>
+    <h2>Where I'm headed.</h2>
+    <p class="sec-intro">
+      Not specialising early is a choice, not an accident. Range is my base — and I'm
+      deliberately extending it in three directions.
+    </p>
+    <div class="growth-grid">
+      <div class="g-card">
+        <div class="stepno">deepen</div>
+        <h3>Frontend, next level</h3>
+        <p>Extending my React + TypeScript foundation with <strong>Next.js</strong> — server components, routing, and production-grade rendering strategies.</p>
+        <div class="chips"><span class="chip next">Next.js</span></div>
+      </div>
+      <div class="g-card">
+        <div class="stepno">strengthen</div>
+        <h3>Backend &amp; system design</h3>
+        <p>Moving from writing services to <strong>designing systems</strong> — containerisation with Docker, cloud infrastructure on AWS, and architecture that scales.</p>
+        <div class="chips"><span class="chip next">Docker</span><span class="chip next">AWS</span></div>
+      </div>
+      <div class="g-card">
+        <div class="stepno">explore</div>
+        <h3>New frontiers</h3>
+        <p>Ready to go where the industry is going: <strong>Generative AI</strong>, <strong>cybersecurity</strong>, and <strong>AR gaming</strong> — a natural extension of my real-time AR background.</p>
+        <div class="chips"><span class="chip explore">Gen AI</span><span class="chip explore">Security</span><span class="chip explore">AR gaming</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="interests">
+  <div class="wrap reveal">
+    <div class="sec-label">06 / Interests</div>
+    <h2>Beyond the keyboard.</h2>
+    <div class="int-grid">
+      <div class="int-card">
+        <div class="emoji">🎵</div>
+        <h3>Music</h3>
+        <p>
+          There's almost always something playing — it's how I focus, how I unwind,
+          and occasionally how the whole room ends up in a better mood.
+        </p>
+      </div>
+      <div class="int-card">
+        <div class="emoji">🏏</div>
+        <h3>Sports</h3>
+        <p>
+          Playing and following. Staying physically active keeps me sharp at the desk —
+          and the competitive streak doesn't hurt when there's a deadline to beat.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap reveal">
+    <div class="sec-label">07 / Contact</div>
+    <h2>Let's connect.</h2>
+    <p>
+      If you need a developer who can pick up whichever layer of your stack needs hands —
+      and keep the team smiling while doing it — I'd love to hear from you.
+    </p>
+    <div class="contact-row">
+      <a class="btn" href="mailto:keyur823827@gmail.com">keyur823827@gmail.com</a>
+      <a class="btn ghost" href="https://linkedin.com/in/keyur-74742" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn ghost" href="https://github.com/keyur982" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Keyur Patel · Hand-built with HTML, CSS and Three.js — no template.</div>
+</footer>
+
+<script>
+  // Scroll-reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Nav scroll-spy
+  const links = document.querySelectorAll('#navlinks a');
+  const sections = [...links].map(a => document.querySelector(a.getAttribute('href')));
+  const spy = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => s && spy.observe(s));
+</script>
+
+<script type="module">
+  const canvas = document.getElementById('ring');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  try {
+    const THREE = await import('https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.module.min.js');
+    const stage = canvas.parentElement;
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 100);
+    camera.position.set(0, 0.6, 5.2);
+
+    const band = new THREE.Mesh(
+      new THREE.TorusGeometry(1.35, 0.16, 40, 120),
+      new THREE.MeshStandardMaterial({ color: 0xd9c08a, metalness: 0.95, roughness: 0.28 })
+    );
+    const gem = new THREE.Mesh(
+      new THREE.OctahedronGeometry(0.34, 0),
+      new THREE.MeshStandardMaterial({ color: 0x4db3cf, metalness: 0.35, roughness: 0.12, flatShading: true, emissive: 0x0e2f3a })
+    );
+    gem.position.y = 1.62;
+    const ring = new THREE.Group();
+    ring.add(band, gem);
+    ring.rotation.x = 0.35;
+    scene.add(ring);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+    const key = new THREE.DirectionalLight(0xffffff, 1.6); key.position.set(3, 4, 5); scene.add(key);
+    const rim = new THREE.DirectionalLight(0x4db3cf, 1.1); rim.position.set(-4, -2, -3); scene.add(rim);
+
+    let targetX = 0, targetY = 0;
+    if (!reduceMotion) {
+      window.addEventListener('pointermove', e => {
+        targetX = (e.clientX / window.innerWidth - 0.5) * 0.6;
+        targetY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+      }, { passive: true });
+    }
+
+    function resize() {
+      const w = stage.clientWidth, h = stage.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    renderer.setAnimationLoop(t => {
+      if (!reduceMotion) {
+        ring.rotation.y = t * 0.00035;
+        gem.rotation.y = t * 0.0009;
+      }
+      ring.rotation.z += ((targetX * 0.5) - ring.rotation.z) * 0.05;
+      ring.rotation.x += ((0.35 + targetY) - ring.rotation.x) * 0.05;
+      renderer.render(scene, camera);
+    });
+  } catch {
+    canvas.outerHTML = `<svg id="ring" viewBox="0 0 300 300" role="img" aria-label="Ring illustration">
+      <circle cx="150" cy="160" r="88" fill="none" stroke="#d9c08a" stroke-width="14" opacity="0.9"/>
+      <polygon points="150,36 178,64 150,92 122,64" fill="#4db3cf" opacity="0.9"/>
+    </svg>`;
+  }
+</script>
+
+</body>
+</html>
